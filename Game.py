@@ -34,11 +34,11 @@ def	 lock_room():
 		elif next == "left" and door_locked:
 			print "DOOR LOCKED"
 			door_locked = False
-		elif next == "open door" and not door_locked:
-				gold_room()
 		elif next == "key" and not door_locked:
 			print "door unlocked"
 			door_locked = False
+		elif next == "open door" and not door_locked:
+				hot_room()
 		else:
 			print "Walls closing. Hurry up!!!!!"
 
@@ -66,14 +66,37 @@ def snake_room():
 		elif next == "right"and not snakes:
 			lock_room()
 		elif next == "behind" and not snakes:
-			kids_room()
+			hot_room()
 		elif next == "front" and not snakes:
 			tiger_room()
 		elif next == "left" and not snakes:
 			wet_room()
 		else:
 			print "WHAT?? SNAKE."
-			
+
+def hot_room():
+	print "Welcome to the hot coal room."
+	print "your feet has started to burn. Guess the code to get out. It is three numbers between 1-5"
+	code = "%d%d%d" % (3,1,5)
+	guess = raw_input("[keypad]> ")
+	guesses = 0
+	while guess != code and guesses < 15:
+		print "BZZZZEDDD!"
+		guesses += 1
+		guess = raw_input("[keypad]> ")
+	if guess == code:
+		print "congrats now choose a room. left, right, front, behind."
+		next = raw_input("> ")
+		if next == "right":
+			wet_room()
+		elif next == "behind":
+			lock_room()
+		elif next == "front":
+			wet_room()
+		elif next == "left":
+			 gold_room()
+	else:
+		dead("The room got to hot and you burned to death!!!!") 
 			
 def wet_room():
 	print "You go in to a room and water starts flowiwng out of the corners."
@@ -220,7 +243,7 @@ def start():
 	next = raw_input("> ")
 	
 	if next == "left":
-		tiger_room()
+		hot_room()
 	elif next == "front":
 		snake_room()
 	elif next == "right":
