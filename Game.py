@@ -38,7 +38,7 @@ def	 lock_room():
 			print "door unlocked"
 			door_locked = False
 		elif next == "open door" and not door_locked:
-				hot_room()
+			hot_room()
 		else:
 			print "Walls closing. Hurry up!!!!!"
 
@@ -66,14 +66,89 @@ def snake_room():
 		elif next == "right"and not snakes:
 			lock_room()
 		elif next == "behind" and not snakes:
-			hot_room()
+			kid_room()
 		elif next == "front" and not snakes:
 			tiger_room()
 		elif next == "left" and not snakes:
 			wet_room()
 		else:
 			print "WHAT?? SNAKE."
+			
+def bomb_room():
+	print "You go in theres a bomb sitting at your feet."
+	print "There is also several colored wires."
+	print "Which one will you cut?"
+	
+	while True:
 
+		next = raw_input("> ")
+		
+		if next == "black":
+			print "safe. Now choose a room front, behind, left, right."
+		elif next == "purple":
+			dead("It exploded and you die.")
+		elif next == "red":
+			dead("It exploded and you die.")
+		elif next == "blue":
+			dead("It exploded and you die.")
+		elif next == "green": 
+			dead("It exploded and you die.")
+		elif next == "yellow": 
+			dead("It exploded and you die.")
+		elif next == "pink":
+			dead("It exploded and you die.")
+		elif next == "brown": 
+			dead("It exploded and you die.")
+		elif next == "white":
+			dead("It exploded and you die.")
+		else:
+			dead("It exploded and you die. ALl because you misspelled a word.")
+			
+		next = raw_input("> ")
+		
+		if next == "right":
+			snake_room()
+		elif next == "behind":
+			wet_room()
+		elif next == "front":
+			monkey_room()
+		elif next == "left":
+			 hot_room()
+			 
+def monkey_room():
+	print "DUCK. You duck just as monkey poop flies over your head."
+	print "Well come to the monkey poop run."
+	print "Get all five monkeys with their own poop. Good luck."
+	print "Incoming. What are you going to do?"
+	Ammo = False
+	monkey = 5
+	while monkey > 0:
+		next = raw_input("> ")
+		
+		if next == "dodge":
+			print "THERE IS THE A MONKEY. He missed you. So now you have some poop to sling."
+			Ammo = True
+		if next ==	"throw" and Ammo:
+			print "Another one bites the dust."
+			monkey -= 1
+			print monkey, "More to go"
+		else:
+			break
+	
+	if monkey == 0:
+		print "You got all of them. Now pick a room front, behind, left right"
+		next = raw_input("> ")
+		if next == "right":
+			snake_room()
+		elif next == "behind":
+			gold_room()
+		elif next == "front":
+			wet_room()
+		elif next == "left":
+			kids_room()
+	else:
+		dead("YOU WERE HIT BY THE MONKEY POOP AND VAPORISED ON THE SPOT.")
+		
 def hot_room():
 	print "Welcome to the hot coal room."
 	print "your feet has started to burn. Guess the code to get out. It is three numbers between 1-5"
@@ -88,7 +163,7 @@ def hot_room():
 		print "congrats now choose a room. left, right, front, behind."
 		next = raw_input("> ")
 		if next == "right":
-			wet_room()
+			kid_room()
 		elif next == "behind":
 			lock_room()
 		elif next == "front":
@@ -162,7 +237,7 @@ def wet_room():
 
 				
 		if next == "right" and not water:
-			gold_room()
+			monkey_room()
 		elif next == "behind" and not water:
 			lock_room()
 		elif next == "front" and not water:
@@ -243,11 +318,11 @@ def start():
 	next = raw_input("> ")
 	
 	if next == "left":
-		hot_room()
+		bomb_room()
 	elif next == "front":
 		snake_room()
 	elif next == "right":
-		kids_room()
+		monkey_room()
 	elif next == "behind":
 		wet_room()
 	else:
