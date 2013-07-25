@@ -107,14 +107,42 @@ def bomb_room():
 		next = raw_input("> ")
 		
 		if next == "right":
-			snake_room()
+			gum_room()
 		elif next == "behind":
-			wet_room()
+			bomb_room()
 		elif next == "front":
 			monkey_room()
 		elif next == "left":
 			 hot_room()
 			 
+def gum_room():
+	print "You get to a room and gum is put in your mouth."
+	print "The gum is poisoned and so you dont want to chew it."
+	print "Will you chew it or spit it out some, where? Sink or trash can."
+	while True:
+	
+		next = raw_input("> ")
+	
+		if next == "chew":
+			dead("You chew poison gum. Really, REALLY. Man, Your a smart one.")
+		elif next == "spit out in sink":
+				dead("Liene came out of the sink and beat you to death with a pool noodle. 'spit not thy gum into the sink, or suffer the wrath of the pool noodle' says the mighty Liene ")
+		elif next == "spit out in trash can":
+			print "Choose your door front, behind, left, right"
+			next = raw_input("> ")
+		
+			if next == "right":
+				monkey_room()
+			elif next == "behind":
+				tiger_room()
+			elif next == "front":
+				bomb_room()
+			elif next == "left":
+				 wet_room() 
+		else:
+			print "Failing"
+	
+		
 def monkey_room():
 	print "DUCK. You duck just as monkey poop flies over your head."
 	print "Well come to the monkey poop run."
@@ -139,7 +167,7 @@ def monkey_room():
 		print "You got all of them. Now pick a room front, behind, left right"
 		next = raw_input("> ")
 		if next == "right":
-			snake_room()
+			gum_room()
 		elif next == "behind":
 			gold_room()
 		elif next == "front":
@@ -155,19 +183,23 @@ def hot_room():
 	code = "%d%d%d" % (3,1,5)
 	guess = raw_input("[keypad]> ")
 	guesses = 0
+	
 	while guess != code and guesses < 15:
+	
 		print "BZZZZEDDD!"
 		guesses += 1
+		
 		guess = raw_input("[keypad]> ")
+		
 	if guess == code:
 		print "congrats now choose a room. left, right, front, behind."
 		next = raw_input("> ")
 		if next == "right":
 			kid_room()
 		elif next == "behind":
-			lock_room()
+			gum_room()
 		elif next == "front":
-			wet_room()
+			bomb_room()
 		elif next == "left":
 			 gold_room()
 	else:
@@ -234,17 +266,15 @@ def wet_room():
 			dead("EATEN ALIVE!!")
 		elif next == "purple" and piranhas:
 			dead("That got the piranhas all hungery. You where consumed.")
-
 				
 		if next == "right" and not water:
 			monkey_room()
 		elif next == "behind" and not water:
-			lock_room()
+			gum_room()
 		elif next == "front" and not water:
 			kids_room()
 		elif next == "left" and not water:
 			tiger_room()
-
 
 		if next == "black" and sharks:
 			dead("EATEN ALIVE!!!")
@@ -265,8 +295,6 @@ def wet_room():
 		elif next == "purple" and sharks:
 			print "Sharks where sent a way. What the color?"
 			sharks = False
-
-
 		
 def tiger_room():
 	print "There is a Tiger here."
@@ -306,7 +334,7 @@ def kids_room():
 		dead("You were eaten by the kids.")
 		
 def dead(why):
-	print why, "Good job!"
+	print why, "Good job! FAIL."
 	exit(0)
 	
 def start():
@@ -324,7 +352,7 @@ def start():
 	elif next == "right":
 		monkey_room()
 	elif next == "behind":
-		wet_room()
+		gum_room()
 	else:
 		dead("You stumble around the room until you starve.")
 		
