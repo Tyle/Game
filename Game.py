@@ -138,7 +138,7 @@ def gum_room():
 			elif next == "front":
 				bomb_room()
 			elif next == "left":
-				 wet_room() 
+				 cute_room() 
 		else:
 			print "Failing"
 	
@@ -270,7 +270,7 @@ def wet_room():
 		if next == "right" and not water:
 			monkey_room()
 		elif next == "behind" and not water:
-			gum_room()
+			cute_room()
 		elif next == "front" and not water:
 			kids_room()
 		elif next == "left" and not water:
@@ -295,7 +295,31 @@ def wet_room():
 		elif next == "purple" and sharks:
 			print "Sharks where sent a way. What the color?"
 			sharks = False
-		
+def cute_rooom():
+	print "You feel the ground shake."
+	print "SOMETHING BIG AND SCARY IS COMING."
+	print "Finally it appears. It's horrible. Terrifying. Just run away."
+	print "You see a ton of puppies, kittens and baby animals."
+	print "All giving you their cute little faces. LOOK AWAY!!"
+	print "You start to feel youself falling for their cuteness. But then you remember your mission."
+	print "You can either choose door or fall for their cuteness."
+	
+	next = raw_input("> ")
+	 
+	if next == "fall for cuteness":
+		dead("The cuteness consumed you! YOUR SO ADORABLE.")
+	elif next == "left":
+		wet_room()
+	elif next == "front":
+		tiger_room()
+	elif next == "right":
+		gum_room()
+	elif next == "behind":
+		kid_room()
+	else:
+		dead("The cute little animals got hungry and you stayed to long.")
+	
+
 def tiger_room():
 	print "There is a Tiger here."
 	print "The is very hungery."
@@ -334,7 +358,7 @@ def kids_room():
 		dead("You were eaten by the kids.")
 		
 def dead(why):
-	print why, "Good job! FAIL."
+	print why, "Good job! FAIL. -_-"
 	exit(0)
 	
 def start():
@@ -348,7 +372,7 @@ def start():
 	if next == "left":
 		bomb_room()
 	elif next == "front":
-		snake_room()
+		cute_room()
 	elif next == "right":
 		monkey_room()
 	elif next == "behind":
